@@ -1,0 +1,28 @@
+server-port: 8081
+scheme: http
+host: localhost
+
+port-customer-microservice: 8082
+port-user-microservice: 8083
+
+
+### Change server port:
+server:
+  port: ${server-port}
+
+##Define routes for microservices:
+spring:
+  application:
+    name: reverseProxyGatewayTest1
+  cloud:
+    gateway:
+      routes:
+        - id: customer-microservice
+          uri: ${scheme}://${host}:${port-customer-microservice}
+          predicates:
+            - Path= /customer/**
+        - id: user-microservice
+          uri: ${scheme}://${host}:${port-user-microservice}
+          predicates:
+            - Path= /user/**
+

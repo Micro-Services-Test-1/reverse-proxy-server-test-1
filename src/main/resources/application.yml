@@ -10,7 +10,7 @@ port-user-microservice: 8083
 server:
   port: ${server-port}
 
-##Define routes for microservices:
+##Define routes for microservices :
 spring:
   application:
     name: reverseProxyGatewayTest1
